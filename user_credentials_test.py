@@ -93,4 +93,14 @@ class TestCredentials(unittest.TestCase):
 		gmail = Credential('Gitonga','Gmail','Gitongamiriam','pswd200')
 		gmail.save_credentials()
 		self.assertEqual(len(Credential.display_credentials(twitter.user_name)),2)
+  	def test_find_by_site_name(self):
+    		'''
+		Test to check if the find_by_site_name method returns the correct credential
+		'''
+		self.new_credential.save_credentials()
+		twitter = Credential('Gitonga','Twitter','Gitongamiriam','pswd4363')
+		twitter.save_credentials()
+		credential_exists = Credential.find_by_site_name('Twitter')
+		self.assertEqual(credential_exists,twitter)
+
 

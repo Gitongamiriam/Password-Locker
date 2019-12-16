@@ -20,13 +20,13 @@ class User:
 		self.first_name = first_name
 		self.password = password
 	def save_user(self):
-    	'''
+		'''
 		Function to save a new user
 		'''
 		User.users_list.append(self)
-  
+   
 class Credential:
-    '''
+	'''
 	Class to create  account credentials, generate passwords and save their information
 	'''
 	# Class Variables
@@ -43,8 +43,8 @@ class Credential:
 				current_user = user.first_name
 		return current_user
 	def __init__(self,user_name,site_name,account_name,password):
-    		'''
-		Method to define the properties for each user object will hold.
+		'''
+  		Method to define the properties for each user object will hold.
 		'''
 
 		# instance variables
@@ -52,13 +52,14 @@ class Credential:
 		self.site_name = site_name
 		self.account_name = account_name
 		self.password = password
-    def save_credentials(self):
-        '''
+  
+	def save_credentials(self):
+		'''
 		Function to save a newly created user instance
 		'''
 		# global users_list
 	def generate_password(size=8, char=string.ascii_uppercase+string.ascii_lowercase+string.digits):
-    	'''
+		'''
 		Function to generate an 8 character password for a credential
 		'''
 		gen_pass=''.join(random.choice(char) for _ in range(size))
@@ -82,7 +83,7 @@ class Credential:
 			if credential.site_name == site_name:
 				return credential
 	def test_copy_credential(self):
-    	'''
+		'''
 		Test to check if the copy a credential method copies the correct credential
 		'''
 		self.new_credential.save_credentials()
@@ -95,16 +96,4 @@ class Credential:
 		Credential.copy_credential(self.new_credential.site_name)
 		self.assertEqual('pswd4363',pyperclip.paste())
 		print(pyperclip.paste())
-
-if __name__ == '__main__':
-	unittest.main(verbosity=2)
-
-				
-
-
-
-
-
-
-
 

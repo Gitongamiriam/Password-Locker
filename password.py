@@ -46,6 +46,11 @@ def display_credentials(user_name):
 	Function to display saved credentials 
 	'''
 	return Credential.display_credentials(user_name)
- 
 
+def copy_credential(site_name):
+    '''
+	Function to copy  credentials
+	'''
+	return Credential.copy_credential(site_name)
+ 
 

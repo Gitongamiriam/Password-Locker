@@ -94,7 +94,7 @@ class TestCredentials(unittest.TestCase):
 		gmail.save_credentials()
 		self.assertEqual(len(Credential.display_credentials(twitter.user_name)),2)
   	def test_find_by_site_name(self):
-    		'''
+    	'''
 		Test to check if the find_by_site_name method returns the correct credential
 		'''
 		self.new_credential.save_credentials()
@@ -102,5 +102,13 @@ class TestCredentials(unittest.TestCase):
 		twitter.save_credentials()
 		credential_exists = Credential.find_by_site_name('Twitter')
 		self.assertEqual(credential_exists,twitter)
+  	@classmethod
+	def copy_credential(cls,site_name):
+		'''
+		Class method that copies a credential's info after the credential's site name is entered
+		'''
+		find_credential = Credential.find_by_site_name(site_name)
+		return pyperclip.copy(find_credential.password)
+
 
 

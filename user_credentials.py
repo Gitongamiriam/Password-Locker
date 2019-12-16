@@ -81,6 +81,24 @@ class Credential:
 		for credential in cls.credentials_list:
 			if credential.site_name == site_name:
 				return credential
+	def test_copy_credential(self):
+    	'''
+		Test to check if the copy a credential method copies the correct credential
+		'''
+		self.new_credential.save_credentials()
+		twitter = Credential('Gitonga','Twitter','Gitongamiriam','pswd4363')
+		twitter.save_credentials()
+		find_credential = None
+		for credential in Credential.user_credentials_list:
+				find_credential =Credential.find_by_site_name(credential.site_name)
+				return pyperclip.copy(find_credential.password)
+		Credential.copy_credential(self.new_credential.site_name)
+		self.assertEqual('pswd4363',pyperclip.paste())
+		print(pyperclip.paste())
+
+if __name__ == '__main__':
+	unittest.main(verbosity=2)
+
 				
 
 

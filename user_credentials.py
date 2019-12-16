@@ -19,4 +19,10 @@ class User:
 		# instance variables
 		self.first_name = first_name
 		self.password = password
+	def save_user(self):
+    	'''
+		Function to save a new user
+		'''
+		User.users_list.append(self)
+
 

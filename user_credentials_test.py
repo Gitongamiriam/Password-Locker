@@ -5,7 +5,7 @@ from user_credentials import User, Credential
 class TestUser(unittest.TestCase):
 	'''
 	Test class that defines test cases for the user class behaviours.
-	Args:
+	Args: 
 	    unittest.TestCase: helps in creating test cases
 	'''
 	def setUp(self):
@@ -77,3 +77,9 @@ class TestCredentials(unittest.TestCase):
 		self.assertEqual(len(Credential.credentials_list),2)
 
 
+	def tearDown(self):
+    	'''
+		Function to clear the credentials list after every test
+		'''
+		Credential.credentials_list = []
+		User.users_list = []

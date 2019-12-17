@@ -4,9 +4,10 @@ from user_credentials import User, Credential
 
 class TestUser(unittest.TestCase):
 	'''
-	Test class that defines test cases for the user class behaviours.
-	Args: 
-	    unittest.TestCase: helps in creating test cases
+		Test class that defines test cases for the user class behaviours.
+
+		Args:
+			unittest.TestCase: helps in creating test cases
 	'''
 	def setUp(self):
 		'''
@@ -16,24 +17,25 @@ class TestUser(unittest.TestCase):
 
 	def test__init__(self):
 		'''
-		Test to if check the initialization of user instances 
+		Test to if check the initialization of user instances
 		'''
 		self.assertEqual(self.new_user.first_name,'Miriam')
 		self.assertEqual(self.new_user.password,'pswd4363')
 
 	def test_save_user(self):
-    	'''
-		Test to check if the new users info is saved 
+		'''
+		Test to check if the new users info is saved
 		'''
 		self.new_user.save_user()
-		self.assertEqual(len(User.users_list),1)
-  
+		self.assertEqual(len(User.users_list), 1)
+
 class TestCredentials(unittest.TestCase):
     '''
 	Test class that defines test cases for the credentials class behaviours.
 	Args:
 	    unittest.TestCase: helps in creating test cases
 	'''
+
 	def test_check_user(self):
 		'''
 		Function to test whether the login in function check_user works as expected
@@ -49,9 +51,9 @@ class TestCredentials(unittest.TestCase):
 		return current_user
 
 		self.assertEqual(current_user,Credential.check_user(user2.password,user2.first_name))
-  
+
 		Credential.credentials_list.append(self)
-  
+
   	def setUp(self):
     	'''
 		Function to create an account's credentials before each test
@@ -83,6 +85,7 @@ class TestCredentials(unittest.TestCase):
 		'''
 		Credential.credentials_list = []
 		User.users_list = []
+
   	def test_display_credentials(self):
     	'''
 		Test to check if the display_credentials method, displays the correct credentials.
@@ -93,6 +96,7 @@ class TestCredentials(unittest.TestCase):
 		gmail = Credential('Gitonga','Gmail','Gitongamiriam','pswd200')
 		gmail.save_credentials()
 		self.assertEqual(len(Credential.display_credentials(twitter.user_name)),2)
+
   	def test_find_by_site_name(self):
     	'''
 		Test to check if the find_by_site_name method returns the correct credential
@@ -102,6 +106,7 @@ class TestCredentials(unittest.TestCase):
 		twitter.save_credentials()
 		credential_exists = Credential.find_by_site_name('Twitter')
 		self.assertEqual(credential_exists,twitter)
+
   	@classmethod
 	def copy_credential(cls,site_name):
 		'''
@@ -109,6 +114,3 @@ class TestCredentials(unittest.TestCase):
 		'''
 		find_credential = Credential.find_by_site_name(site_name)
 		return pyperclip.copy(find_credential.password)
-
-
-

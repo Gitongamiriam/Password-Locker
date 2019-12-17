@@ -96,4 +96,3 @@ class Credential:
 		Credential.copy_credential(self.new_credential.site_name)
 		self.assertEqual('pswd4363',pyperclip.paste())
 		print(pyperclip.paste())
-
